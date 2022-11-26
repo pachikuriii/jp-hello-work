@@ -19,5 +19,8 @@
     "rimraf": "^3.0.2",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
+  },
+  "dependencies": {
+    "jp-zipcode-lookup": "^0.2.4"
   }
 }
