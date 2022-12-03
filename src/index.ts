@@ -21,10 +21,8 @@ type Address = {
 };
 
 type PostalMaster = { [zip: string]: Array<string> };
-const zip5Loader: PostalMaster = require("../data/zip5.json").zip5.helloworks;
-const zip7Loader: PostalMaster = require("../data/zip7.json").zip7.helloworks;
-const zip7LoaderOnlyThisHelloWorks: PostalMaster =
-  require("../data/zip7.json").zip7.onlythishelloworks;
+const zip5Loader = require("../data/zip5.json").zip5;
+const zip7Loader = require("../data/zip7.json").zip7;
 
 class HelloWork {
   address: Address;
@@ -32,52 +30,45 @@ class HelloWork {
 
   private constructor(zipcode: string | number, Oaza: any) {
     this.address = Oaza.byZipcode(zipcode)[0];
-    this.name = this.nameSearcher();
+    this.name = this.getName();
   }
 
-  static byZipcode(zipcode: string) {
+  static byZipcode(zipcode: string | number) {
     return new HelloWork(zipcode, Oaza);
   }
 
-  private nameSearcher(): Array<string> {
+  private getName(): Array<string> {
+    const loaders: Array<PostalMaster> = [
+      zip7Loader.onlythishelloworks,
+      zip7Loader.helloworks,
+      zip5Loader.helloworks,
+    ];
+    return this.nameSearcher(loaders);
+  }
+
+  private nameSearcher(loaders: Array<PostalMaster>): Array<string> {
     const name: Array<string> = [];
-    const zip7LoaderKeys = Object.keys(zip7Loader);
-    const zip5LoaderKeys = Object.keys(zip5Loader);
-    const zip7LoaderOnlyThisHelloWorksKeys = Object.keys(
-      zip7LoaderOnlyThisHelloWorks
-    );
-
-    for (const key of zip7LoaderOnlyThisHelloWorksKeys) {
-      if (this.address.code in zip7LoaderOnlyThisHelloWorks[key]) {
-        name.push(key);
-      }
-    }
-
-    if (name.length === 0) {
-      for (const key of zip7LoaderKeys) {
-        if (this.address.code in zip7Loader[key]) {
+    for (const loader of loaders) {
+      for (const key of Object.keys(loader)) {
+        if (
+          loader === zip7Loader.onlythishelloworks &&
+          this.address.code in zip7Loader.onlythishelloworks[key]
+        ) {
           name.push(key);
+          return name;
         }
-      }
-      for (const key of zip5LoaderKeys) {
-        if (this.address.city.code in zip5Loader[key]) {
+        if (
+          loader === zip7Loader.helloworks &&
+          this.address.code in zip7Loader.helloworks[key]
+        )
           name.push(key);
-        }
+        if (
+          loader === zip5Loader.helloworks &&
+          this.address.city.code in zip5Loader.helloworks[key]
+        )
+          name.push(key);
       }
     }
     return name;
   }
-
-  private getKeys(keys: any, name: Array<string>, data: PostalMaster): any {
-    if (name.length !== 0) {
-      for (const key of keys) {
-        if (this.address.code in data[key]) {
-          name.push(key);
-        }
-      }
-    }
-    return;
-  }
 }
-
-console.log(HelloWork.byZipcode("6550872"));
