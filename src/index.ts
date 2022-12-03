@@ -20,12 +20,7 @@ type Address = {
   city: City;
 };
 
-// type PostalRow = (number | string)[];
 type PostalMaster = { [zip: string]: Array<string> };
-
-// type NameKanaPair = [string, string];
-// type CityMaster = { [code: string]: NameKanaPair };
-
 const zip5Loader: PostalMaster = require("../data/zip5.json").zip5.helloworks;
 const zip7Loader: PostalMaster = require("../data/zip7.json").zip7.helloworks;
 const zip7LoaderOnlyThisHelloWorks: PostalMaster =
@@ -35,12 +30,16 @@ class HelloWork {
   address: Address;
   name: Array<string>;
 
-  constructor(zipcode: string | number, Oaza: any) {
+  private constructor(zipcode: string | number, Oaza: any) {
     this.address = Oaza.byZipcode(zipcode)[0];
-    this.name = [];
+    this.name = this.nameSearcher();
   }
 
-  nameSearcher(): void {
+  static byZipcode(zipcode: string) {
+    return new HelloWork(zipcode, Oaza);
+  }
+
+  private nameSearcher(): Array<string> {
     const name: Array<string> = [];
     const zip7LoaderKeys = Object.keys(zip7Loader);
     const zip5LoaderKeys = Object.keys(zip5Loader);
@@ -66,14 +65,19 @@ class HelloWork {
         }
       }
     }
-    this.name = name;
+    return name;
   }
 
-  static byZipcode(zipcode: string | number) {
-    const content = new HelloWork(zipcode, Oaza);
-    content.nameSearcher();
-    return content;
+  private getKeys(keys: any, name: Array<string>, data: PostalMaster): any {
+    if (name.length !== 0) {
+      for (const key of keys) {
+        if (this.address.code in data[key]) {
+          name.push(key);
+        }
+      }
+    }
+    return;
   }
 }
 
-console.log(HelloWork.byZipcode(5630058));
+console.log(HelloWork.byZipcode("6550872"));
