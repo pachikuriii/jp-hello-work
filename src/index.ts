@@ -1,11 +1,11 @@
+/* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { Oaza } from 'jp-zipcode-lookup'
 import { zip5 } from '../data/zip5.json'
 import { zip7 } from '../data/zip7.json'
-
-interface City { code: string };
-interface Address { code: string, city: City }
-interface PostalKey { [zip: string]: string[] }
-interface HelloWorkKey { [hellowork: string]: PostalKey }
+import { City } from './types'
+type Address = { code: string, city: City }
+type PostalKey = { [zip: string]: string[] }
+type HelloWorkKey = { [hellowork: string]: PostalKey }
 
 export class HelloWork {
   address: Address
