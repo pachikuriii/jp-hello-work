@@ -15,6 +15,8 @@
   "author": "Saya Takahashi",
   "license": "ISC",
   "devDependencies": {
+    "@jest/types": "^29.3.1",
+    "@types/jest": "^29.2.3",
     "@types/node": "^18.11.9",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "eslint": "^8.29.0",
@@ -22,11 +24,14 @@
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.5.1",
     "eslint-plugin-promise": "^6.1.1",
+    "jest": "^29.3.1",
+    "ts-jest": "^29.0.3",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.3"
   },
   "dependencies": {
     "jp-zipcode-lookup": "^0.2.4"
   },
-  "type": "commonjs"
+  "type": "commonjs",
+  "test": "jest"
 }

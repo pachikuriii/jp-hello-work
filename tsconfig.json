@@ -96,7 +96,7 @@
     // "allowUnusedLabels": true,                        /* Disable error reporting for unused labels. */
     // "allowUnreachableCode": true,
     "lib": ["ESNext"],
-    "types": ["node"],
+    "types": ["node", "jest"],
     "outDir": "dist" /* Disable error reporting for unreachable code. */
 
     /* Completeness */
