@@ -21,7 +21,7 @@ export class HelloWork {
   }
 
   private getName (): string[] {
-    const loaders: HelloWorkKey[] = [zip5.helloworks, zip7.helloworks, zip7.onlythishelloworks]
+    const loaders: HelloWorkKey[] = [zip5.helloWorks, zip7.helloWorks, zip7.helloWorksForLimitedArea]
     return this.nameSearcher(loaders)
   }
 
@@ -30,20 +30,20 @@ export class HelloWork {
     for (const loader of loaders) {
       for (const key of Object.keys(loader)) {
         if (
-          loader === zip7.onlythishelloworks &&
+          loader === zip7.helloWorksForLimitedArea &&
           this.address.code in loader[key]
         ) {
           name.push(key)
           return name
         }
         if (
-          loader === zip7.helloworks &&
+          loader === zip7.helloWorks &&
           this.address.code in loader[key]
         ) {
           name.push(key)
         }
         if (
-          loader === zip5.helloworks &&
+          loader === zip5.helloWorks &&
           this.address.city.code in loader[key]
         ) {
           name.push(key)
