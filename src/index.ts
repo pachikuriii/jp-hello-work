@@ -1,44 +1,28 @@
-const { Oaza } = require("jp-zipcode-lookup");
+import { Oaza } from "jp-zipcode-lookup";
 
-type Pref = {
-  name: string;
-  code: string;
-  kana: string;
-};
+type City = { code: string };
+type Address = { code: string; city: City };
+type PostalKey = { [zip: string]: string[] };
+type HelloWorkKey = { [hellowork: string]: PostalKey };
 
-type City = {
-  name: string;
-  code: string;
-  kana: string;
-  pref: Pref;
-};
-
-type Address = {
-  name: string;
-  code: string;
-  pref: Pref;
-  city: City;
-};
-
-type PostalMaster = { [zip: string]: Array<string> };
-const zip5Loader = require("../data/zip5.json").zip5;
-const zip7Loader = require("../data/zip7.json").zip7;
+const zip5Loader: Readonly<HelloWorkKey> = require("../data/zip5.json").zip5;
+const zip7Loader: Readonly<HelloWorkKey> = require("../data/zip7.json").zip7;
 
 class HelloWork {
   address: Address;
-  name: Array<string>;
+  name: string[];
 
-  private constructor(zipcode: string | number, Oaza: any) {
-    this.address = Oaza.byZipcode(zipcode)[0];
+  private constructor(zipcode: string | number) {
+    this.address = Oaza.byZipcode(zipcode)[0]!;
     this.name = this.getName();
   }
 
   static byZipcode(zipcode: string | number) {
-    return new HelloWork(zipcode, Oaza);
+    return new HelloWork(zipcode);
   }
 
-  private getName(): Array<string> {
-    const loaders: Array<PostalMaster> = [
+  private getName(): string[] {
+    const loaders: PostalKey[] = [
       zip7Loader.onlythishelloworks,
       zip7Loader.helloworks,
       zip5Loader.helloworks,
@@ -46,8 +30,8 @@ class HelloWork {
     return this.nameSearcher(loaders);
   }
 
-  private nameSearcher(loaders: Array<PostalMaster>): Array<string> {
-    const name: Array<string> = [];
+  private nameSearcher(loaders: PostalKey[]): string[] {
+    const name: string[] = [];
     for (const loader of loaders) {
       for (const key of Object.keys(loader)) {
         if (
@@ -72,3 +56,4 @@ class HelloWork {
     return name;
   }
 }
+console.log(HelloWork.byZipcode(6550872));
