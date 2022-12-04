@@ -4,9 +4,7 @@
     "node": true
   },
   "extends": "standard-with-typescript",
-  "overrides": [],
   "parserOptions": {
     "project": "./tsconfig.json"
-  },
-  "rules": {}
+  }
 }
