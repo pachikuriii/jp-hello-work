@@ -2,7 +2,7 @@
 import { Oaza } from 'jp-zipcode-lookup'
 import { zip5 } from '../data/zip5.json'
 import { zip7 } from '../data/zip7.json'
-import { City } from './types'
+import { City } from '../types/types'
 type Address = { code: string, city: City }
 type PostalKey = { [zip: string]: string[] }
 type HelloWorkKey = { [hellowork: string]: PostalKey }
