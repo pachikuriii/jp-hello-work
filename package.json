@@ -22,5 +22,6 @@
   },
   "dependencies": {
     "jp-zipcode-lookup": "^0.2.4"
-  }
+  },
+  "type": "commonjs"
 }
