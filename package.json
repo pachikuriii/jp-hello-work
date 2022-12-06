@@ -2,16 +2,12 @@
   "name": "jp-hello-work",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/src/jp-hello-work.js",
+  "types": "src/jp-hello-work.d.ts",
   "scripts": {
-    "test": "jest",
-    "prebuild": "rimraf dist",
-    "build": "tsc"
+    "build": "tsc",
+    "prepare": "npm run build"
   },
-  "files": [
-    "dist"
-  ],
   "keywords": [],
   "author": "Saya Takahashi",
   "license": "MIT",
@@ -32,6 +28,5 @@
   },
   "dependencies": {
     "jp-zipcode-lookup": "^0.2.4"
-  },
-  "type": "commonjs"
+  }
 }
