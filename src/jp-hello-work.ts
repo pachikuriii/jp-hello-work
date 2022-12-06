@@ -16,7 +16,7 @@ export class HelloWork {
     this.name = this.getName()
   }
 
-  static byZipcode (zipcode: string | number): HelloWork {
+  static byZipCode (zipcode: string | number): HelloWork {
     return new HelloWork(zipcode)
   }
 
@@ -57,4 +57,3 @@ export class HelloWork {
     return name
   }
 }
-console.log(HelloWork.byZipcode(6550872))
