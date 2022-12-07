@@ -4,6 +4,6 @@
     "./src/jp-hello-work.ts",
     "./data",
     "./type/jp-hello-work.d.ts",
-    "test/index.test.ts"
+    "test/jp-hello-work.test.ts"
   ]
 }
