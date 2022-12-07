@@ -2,13 +2,10 @@
 import { Oaza } from 'jp-zipcode-lookup'
 import { zip5 } from '../data/zip5.json'
 import { zip7 } from '../data/zip7.json'
-type City = { code: string}
-type Address = { code: string, city: City }
-type PostalKey = { [zip: string]: string[] }
-type HelloWorkKey = { [hellowork: string]: PostalKey }
+import { HelloWorkSettings } from "../type/jp-hello-work";
 
 export class HelloWork {
-  address: Address
+  address: HelloWorkSettings.Address
   name: string[]
 
   private constructor (zipcode: string | number) {
@@ -21,7 +18,7 @@ export class HelloWork {
   }
 
   private getName (): string[] {
-    const loaders: HelloWorkKey[] = [
+    const loaders: HelloWorkSettings.Key[] = [
       zip7.helloWorksForLimitedArea,
       zip7.helloWorks,
       zip5.helloWorks
@@ -29,7 +26,7 @@ export class HelloWork {
     return this.nameSearcher(loaders)
   }
 
-  private nameSearcher (loaders: HelloWorkKey[]): string[] {
+  private nameSearcher (loaders: HelloWorkSettings.Key[]): string[] {
     const name: string[] = []
     for (const loader of loaders) {
       for (const key of Object.keys(loader)) {
