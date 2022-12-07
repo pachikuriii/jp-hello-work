@@ -103,5 +103,5 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "include": ["src", "data", "type"]
+  "include": ["./src/jp-hello-work.ts", "./data", "./type/jp-hello-work.d.ts"]
 }

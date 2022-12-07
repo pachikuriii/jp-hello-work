@@ -6,7 +6,8 @@
   "types": "type/jp-hello-work.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "test": "jest"
   },
   "keywords": [],
   "author": "Saya Takahashi",

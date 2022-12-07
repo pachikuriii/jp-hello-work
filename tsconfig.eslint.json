@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "./src/jp-hello-work.ts",
+    "./data",
+    "./type/jp-hello-work.d.ts",
+    "test/index.test.ts"
+  ]
+}
