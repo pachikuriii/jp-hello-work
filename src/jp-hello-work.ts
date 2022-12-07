@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/consistent-type-definitions */
 import { Oaza } from 'jp-zipcode-lookup'
 import { zip5 } from '../data/zip5.json'
 import { zip7 } from '../data/zip7.json'
-import { HelloWorkSettings } from "../type/jp-hello-work";
+import { HelloWorkSettings } from '../type/jp-hello-work'
 
 export class HelloWork {
   address: HelloWorkSettings.Address
