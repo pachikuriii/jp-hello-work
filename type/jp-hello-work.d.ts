@@ -1,7 +1,7 @@
 
 export declare namespace HelloWorkSettings {
   interface PostalKey { [zip: string]: string[] }
-  interface Key { [hellowork: string]: PostalKey }
+  interface Loader { [hellowork: string]: PostalKey }
   interface City { code: string }
   interface Address {
     code: string

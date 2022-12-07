@@ -17,7 +17,7 @@ export class HelloWork {
   }
 
   private getName (): string[] {
-    const loaders: HelloWorkSettings.Key[] = [
+    const loaders: HelloWorkSettings.Loader[] = [
       zip7.helloWorksForLimitedArea,
       zip7.helloWorks,
       zip5.helloWorks
@@ -25,7 +25,7 @@ export class HelloWork {
     return this.nameSearcher(loaders)
   }
 
-  private nameSearcher (loaders: HelloWorkSettings.Key[]): string[] {
+  private nameSearcher (loaders: HelloWorkSettings.Loader[]): string[] {
     const name: string[] = []
     for (const loader of loaders) {
       for (const key of Object.keys(loader)) {
