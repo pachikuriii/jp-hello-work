@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/src/jp-hello-work.js",
-  "types": "src/jp-hello-work.d.ts",
+  "types": "type/jp-hello-work.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
