@@ -12,8 +12,12 @@ export class HelloWork {
     this.name = this.getName()
   }
 
-  static byZipCode (zipcode: string | number): HelloWork {
-    return new HelloWork(zipcode)
+  static byZipCode(zipcode: string | number) {
+    try {
+      return new HelloWork(zipcode)
+    } catch (error: unknown) {
+      return null
+    }
   }
 
   private getName (): string[] {
