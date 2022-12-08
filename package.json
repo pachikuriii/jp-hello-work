@@ -1,14 +1,12 @@
 {
   "name": "jp-hello-work",
   "version": "1.0.0",
-  "description": "",
+  "description": "A package to search Hello Work(Employment Service Center operated by Japanese government) in charge of your living area by just inputting zipcode.",
   "main": "dist/src/jp-hello-work.js",
   "types": "type/jp-hello-work.d.ts",
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run build",
-    "test": "jest",
-    "lint": "eslint . --ext ts"
+    "prepare": "npm run build"
   },
   "keywords": [],
   "author": "Saya Takahashi",

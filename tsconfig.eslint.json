@@ -1,9 +1,4 @@
 {
   "extends": "./tsconfig.json",
-  "include": [
-    "./src/jp-hello-work.ts",
-    "./data",
-    "./type/jp-hello-work.d.ts",
-    "test/jp-hello-work.test.ts"
-  ]
+  "include": ["./src", "./data", "./type", "./test", "*.js"]
 }
