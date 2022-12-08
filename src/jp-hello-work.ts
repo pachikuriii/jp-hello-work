@@ -3,11 +3,17 @@ import { zip5 } from '../data/zip5.json'
 import { zip7 } from '../data/zip7.json'
 import { HelloWorkSettings } from '../type/jp-hello-work'
 
+const loaders: HelloWorkSettings.Loader[] = [
+  zip7.helloWorksForLimitedArea,
+  zip7.helloWorks,
+  zip5.helloWorks
+]
+
 export class HelloWork {
   address: HelloWorkSettings.Address
   name: string[]
 
-  private constructor (zipcode: string | number) {
+  private constructor(zipcode: string | number) {
     this.address = Oaza.byZipcode(zipcode)[0]
     this.name = this.getName()
   }
@@ -15,21 +21,12 @@ export class HelloWork {
   static byZipCode(zipcode: string | number) {
     try {
       return new HelloWork(zipcode)
-    } catch (error: unknown) {
-      return null
+    } catch (error) {
+      throw new Error
     }
   }
 
-  private getName (): string[] {
-    const loaders: HelloWorkSettings.Loader[] = [
-      zip7.helloWorksForLimitedArea,
-      zip7.helloWorks,
-      zip5.helloWorks
-    ]
-    return this.nameSearcher(loaders)
-  }
-
-  private nameSearcher (loaders: HelloWorkSettings.Loader[]): string[] {
+  private getName () {
     const name: string[] = []
     for (const loader of loaders) {
       for (const key of Object.keys(loader)) {
