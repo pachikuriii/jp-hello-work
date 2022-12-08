@@ -26,7 +26,7 @@ export class HelloWork {
     }
   }
 
-  private getName () {
+  private getName() {
     const name: string[] = []
     for (const loader of loaders) {
       for (const key of Object.keys(loader)) {
