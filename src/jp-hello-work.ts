@@ -10,12 +10,19 @@ const loaders: HelloWorkSettings.Loader[] = [
 ]
 
 export class HelloWork {
-  address: HelloWorkSettings.Address
+  pref: string
+  city : string
+  town : string
+  zip: string
   name: string[]
 
   private constructor(zipcode: string | number) {
-    this.address = Oaza.byZipcode(zipcode)[0]
-    this.name = this.getName()
+    const address = Oaza.byZipcode(zipcode)[0]
+    this.pref = address.pref.name
+    this.city = address.city.name
+    this.town = address.name
+    this.zip = String(zipcode)
+    this.name = this.getName(address)
   }
 
   static byZipCode(zipcode: string | number) {
@@ -26,26 +33,26 @@ export class HelloWork {
     }
   }
 
-  private getName() {
+  private getName(address: HelloWorkSettings.Address) {
     const name: string[] = []
     for (const loader of loaders) {
       for (const key of Object.keys(loader)) {
         if (
           loader === zip7.helloWorksForLimitedArea &&
-          this.address.code in loader[key]
+          address.code in loader[key]
         ) {
           name.push(key)
           return name
         }
         if (
           loader === zip7.helloWorks &&
-          this.address.code in loader[key]
+          address.code in loader[key]
         ) {
           name.push(key)
         }
         if (
           loader === zip5.helloWorks &&
-          this.address.city.code in loader[key]
+          address.city.code in loader[key]
         ) {
           name.push(key)
         }

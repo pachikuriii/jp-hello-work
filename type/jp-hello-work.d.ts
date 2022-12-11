@@ -1,6 +1,6 @@
 
 export declare namespace HelloWorkSettings {
-  interface PostalKey { [zip: string]: string[] }
+  interface PostalKey { [zip: string]: string[]| string }
   interface Loader { [hellowork: string]: PostalKey }
   interface City { code: string }
   interface Address {
@@ -10,9 +10,13 @@ export declare namespace HelloWorkSettings {
 }
 
 export declare class HelloWork {
-  address: HelloWorkSettings.Address
+  pref: string
+  city : string
+  town : string
+  zip: string
   name: string[]
+
   private constructor (zipcode: string | number)
   static byZipCode (zipcode: string | number): HelloWork
-  private getName: string[]
+  private getName (address: HelloWorkSettings.Address): string[]
 }
