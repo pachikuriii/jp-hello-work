@@ -1,0 +1,9 @@
+/node_modules
+/dist/test
+test/
+.eslintignore
+.eslintrc.json
+.gitignore
+jest.config.js
+tsconfig.eslint.json
+tsconfig.json

@@ -1,14 +1,23 @@
 {
   "name": "jp-hello-work",
   "version": "1.0.0",
-  "description": "A package to search Hello Work(Employment Service Center operated by Japanese government) in charge of your living area by just inputting zipcode.",
+  "description": "A package to search Hello Work in charge of given city or town in zipcode.",
   "main": "dist/src/jp-hello-work.js",
   "types": "type/jp-hello-work.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "Japan",
+    "Hello Work",
+    "ZIP"
+  ],
+  "homepage": "https://github.com/pachikuriii/jp-hello-work#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pachikuriii/jp-hello-work.git"
+  },
   "author": "Saya Takahashi",
   "license": "MIT",
   "devDependencies": {

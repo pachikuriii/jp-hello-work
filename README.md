@@ -1,13 +1,14 @@
 # jp-hello-work
 
-A package to search Hello Work(Employment Service Center operated by Japanese government) in charge of specified area by just inputting zipcode.
+A package to search Hello Work in charge of given city or town in Zip code.
+Hello Work is an Employment Service Center operated by Japanese government.
 
 ## Usage
 
-```
+```javascript
 const { HelloWork } = require("jp-hello-work");
 
-const helloWork = HelloWork.byZipcode("6060022");
+const helloWork = HelloWork.byZipCode("6060022");
 console.log(helloWork.name); // =>  [ '京都西陣' ]
 ```
 
@@ -15,7 +16,7 @@ console.log(helloWork.name); // =>  [ '京都西陣' ]
 
 - [jp-hello-work.d.ts](https://github.com/pachikuriii/jp-hello-work/blob/main/type/jp-hello-work.d.ts)
 
-```
+```typescript
 import { HelloWork } from "jp-hello-work";
 
 const helloWork = HelloWork.byZipCode("1920364");
@@ -32,21 +33,20 @@ $ npm install jp-hello-work
 
 ## Access to Hello Work data
 
+| key  | data   | example      | title                                                         |
+| ---- | ------ | ------------ | ------------------------------------------------------------- |
+| pref | String | '宮崎県'     | Prefecture where the Hello Work is                            |
+| city | String | '小林市'     | City the Hello Work controls                                  |
+| town | String | '野尻町東麓' | Town the Hello Work controls                                  |
+| zip  | String | '8860212'    | Given Zip code                                                |
+| name | Array  | [ '小林' ]   | Hello Work name which controls given city or town in Zip code |
+
 ## Other
 
-These data are based on as below.
-https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/index.html
-https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html
+- These data are based on as below.
+  https://www.mhlw.go.jp/kouseiroudoushou/shozaiannai/roudoukyoku/index.html
+  https://www.post.japanpost.jp/zipcode/dl/kogaki-zip.html
 
-The MIT License (MIT)
-Copyright (c) 2022 Saya Takahashi
+## Lisence
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-```
-
-```
+This project is licensed under the MIT License, see the LICENSE.txt file for details
