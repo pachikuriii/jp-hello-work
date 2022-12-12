@@ -17,6 +17,6 @@ export declare class HelloWork {
   name: string[]
 
   private constructor (zipcode: string | number)
-  static byZipCode (zipcode: string | number): HelloWork
+  static byZipCode (zipcode: string | number): HelloWork | Error
   private getName (address: HelloWorkSettings.Address): string[]
 }
