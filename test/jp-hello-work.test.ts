@@ -34,12 +34,10 @@ describe("valid input", () => {
 
 describe("invalid input", () => {
   test("expect zipcode written in not number returns error", () => {
-    const helloWork = HelloWork.byZipCode('XXXXXXX')
-    expect(helloWork).toBeInstanceOf(Error)
+    expect(() => HelloWork.byZipCode('XXXXXXX')).toThrow();
   })
   
   test("expect zipcode including dash returns error", () => {
-    const helloWork = HelloWork.byZipCode(739-2631)
-    expect(helloWork).toBeInstanceOf(Error)
+    expect(() => HelloWork.byZipCode(739-2631)).toThrow();
   })
 })
