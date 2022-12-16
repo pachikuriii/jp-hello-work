@@ -18,7 +18,6 @@ export class HelloWork {
 
   private constructor(zipcode: string | number) {
     const address = Oaza.byZipcode(zipcode)[0]
-    if (!address) throw new Error
     this.pref = address.pref.name
     this.city = address.city.name
     this.town = address.name
@@ -27,15 +26,7 @@ export class HelloWork {
   }
 
   static byZipCode(zipcode: string | number) {
-    try {
-      return new HelloWork(zipcode)
-    } catch (error) {
-      if (error instanceof Error) {
-        return error
-      } else {
-        throw new Error
-      }
-    }
+    return new HelloWork(zipcode)
   }
 
   private getName(address: HelloWorkSettings.Address) {
